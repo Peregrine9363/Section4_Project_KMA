@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>서울대공원 눈치게임</title>
+  </head>
+  <body>
+    <h1>서울대공원 눈치게임</h1>
+    <h3>데이터 형식을 다음과 같이 숫자로 입력해주세요.</h3>
+    <h3>예 : 날짜=505(5월5일), 요일=1~7(월~일),
+        날씨='맑음':0, '구름 조금':1, '흐림':2, '구름 많음':3, '비':4, '눈':5, '눈/비':6,
+        평균 기온=15(섭씨), 강수량=10(mm)
+    </h3>
+    <form action="/predict" method="post">
+      <label for="date">날짜:</label>
+      <input type="text" id="date" name="date" required><br><br>
+      <label for="day_of_week">요일:</label>
+      <input type="text" id="day_of_week" name="day_of_week" required><br><br>
+      <label for="weather">날씨:</label>
+      <input type="text" id="weather" name="weather" required><br><br>
+      <label for="avg_temp">평균 기온:</label>
+      <input type="text" id="avg_temp" name="avg_temp" required><br><br>
+      <label for="precipitation">강수량:</label>
+      <input type="text" id="precipitation" name="precipitation" required><br><br>
+      <input type="submit" value="예측">
+    </form>
+
+    {% if prediction %}
+    <h2>예측 관람객: {{ prediction }}</h2>
+    <h3>참고사항 : 일일 평균 관람객은 4545명입니다.</h3>
+    {% endif %}
+  </body>
+</html>
+
